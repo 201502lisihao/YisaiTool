@@ -1,0 +1,49 @@
+/*!
+ * WeUI v1.1.1 (https://github.com/weui/weui-wxss)
+ * Copyright 2017 Tencent, Inc.
+ * Licensed under the MIT license
+ */
+.weui-flex{-webkit-box-align:center;-webkit-align-items:center;align-items:center}.weui-cells{margin-top:0;opacity:0;-webkit-transform:translateY(-50%);transform:translateY(-50%);-webkit-transition:.3s;transition:.3s}.weui-cells:after,.weui-cells:before{display:none}.weui-cells_show{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}.weui-cell:before{right:15px}.kind-list__item{margin:10px 0;background-color:#fff;border-radius:2px;overflow:hidden}.kind-list__item:first-child{margin-top:0}.kind-list__img{width:30px;height:30px}.kind-list__item-hd{padding:20px;-webkit-transition:opacity .3s;transition:opacity .3s}.kind-list__item-hd_show{opacity:.4}.kind-list__item-bd{height:0;overflow:hidden}.kind-list__item-bd_show{height:auto}
+
+/**头像和个人信息**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.container-welcome {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0rpx 0;
+  box-sizing: border-box;
+} 
+
+/* 注销按钮 */
+.button-hover{
+  background-color: transparent;
+}
+
+.logout_button{
+  font-size: 36rpx;
+  color: gainsboro;
+  border: 0rpx;
+}
+
+.logout_button::after{
+  border: 0rpx;
+}

@@ -1,0 +1,47 @@
+<!-- 下拉刷新提示 -->
+  <view style="text-align: center;margin-bottom:-20rpx;margin-top:20rpx;">
+    <label style="font-size:24rpx; color:gray;">-----下拉查看最新积分-----</label>
+  </view>
+
+<!-- 订单列表展示 -->
+<view wx:if="{{hasOrderList}}" class="container">
+  <block wx:for="{{orderList}}" wx:key="id">
+    <view class="card">
+      <view class="weui-cells">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">获得积分时间：{{item.create_at}}</view>
+          <!-- <view class="weui-cell__ft">{{item.order_status}}</view> -->
+        </view>
+        <view class="weui-cell">
+          <view class="weui-cell__bd">获取方式：{{item.store_name}}</view>
+        </view>
+        <!-- <view class="weui-cell">
+          <view class="weui-cell__bd" wx:if="{{item.get_time}}">完成时间：{{item.get_time}}</view>
+          <view class="weui-cell__bd" wx:else>完成时间：未完成</view>
+        </view> -->
+        <view class="weui-cell">
+          <view class="weui-cell__bd">使用方式：门店出示，10积分可抵1元</view>
+        </view>
+        <view class="weui-cell">
+          <view class="weui-cell__bd" style="color:#000;font-size:40rpx;">积分数量：{{item.get_no}}</view>
+          <view class="weui-cell__ft"><button class="detailButton" hover-class="detailButton-hover"  bindtap="orderDetail" data-id="{{item.id}}">店员点击核销</button></view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
+
+<view wx:else>
+  <view class="sorry_view">
+      <!-- <image src="/images/icons/404-1.png" class="sorry_img"></image>
+      <image src="/images/icons/404-2.png" class="sorry_img"></image>
+      <image src="/images/icons/404-2.png" class="sorry_img"></image> -->
+  </view>
+  <view class="sorry_title">
+    <text>暂无积分</text>
+  </view>
+  <!--去下单按钮-->
+  <view class="page" style="display:flex;flex-direction: column;align-items: center;">
+    <button class="weui-btn" type="primary" bindtap="goOrder" style="width:60%">分享得积分</button>
+  </view>
+</view>

@@ -1,0 +1,80 @@
+.container {
+  padding: 14rpx 0rpx;
+}
+
+/*订单卡片*/
+.card {
+  margin: 16rpx 0rpx;
+  background-color: #fff;
+  width: 640rpx;
+  border-top: 4rpx solid gainsboro;
+  border-bottom: 4rpx solid gainsboro;
+  border-left: 4rpx solid gainsboro;
+  border-right: 4rpx solid gainsboro;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  color: rgb(158, 158, 158);
+  padding-top: 0rpx;
+  padding-bottom: 10rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+
+}
+
+.weui-cells::before {
+  border: 0px;
+}
+.weui-cells::after {
+  border: 0px;
+}
+
+.weui-cell::before {
+  border: 0rpx;
+}
+.weui-cell {
+  padding: 10rpx 20rpx;
+  font-size: 30rpx;
+}
+
+.weui-cell__ft {
+  color: #0a7e00;
+}
+
+.detailButton {
+  background-color: #0a7e00;
+  color: #fff;
+  font-size: 30rpx;
+}
+
+.detailButton-hover {
+  background-color: transparent;
+  color: #0a7e00;
+}
+
+/*抱歉样式*/
+.sorry_title{
+  text-align: center;
+  color: rgb(158, 158, 158);
+  
+}
+.sorry_view{
+  display: flex;
+  flex-direction: row;
+  padding-left: 225rpx;
+  margin-top: 50rpx;
+}
+.sorry_img{
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  width: 100rpx;
+  height: 100rpx;
+}
+
+/*即刻下单按钮*/
+.weui-btn{
+  margin: 40rpx;
+}
+.weui-btn:first-child{
+  margin-top: 40rpx;
+}
