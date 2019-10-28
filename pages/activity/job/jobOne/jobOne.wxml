@@ -6,10 +6,30 @@
     <view class="page__bd">
         <image src="/images/job/jobOne.png" style="height:1900rpx;width:700rpx;"></image>
     </view>
-    <view class="page__ft">
+    <!-- <view class="page__ft">
       <text>联系人：刘先生 13931170889（同微信）</text>
     </view>
     <view>
         <button class="weui-btn bottom-button" type="primary" open-type="share">转发得积分，免费吃牛肉</button>
+    </view> -->
+    <text class='shareText'>分享得积分，免费吃牛肉</text>
+    <text class='shareText' style="margin-top:10rpx;">转发好友 或 生成海报分享至朋友圈</text>
+    <view class='imgBox'>
+      <button open-type="share" class='zfbtn'><image src="/images/icons/zhuanfa.png" class='img'></image></button>
+      <button class='zfbtn m_l' bindtap='createNewPoster'><image src="/images/icons/haibao.png" class='img'></image></button>
     </view>
 </view>
+
+<!-- 海报 -->
+<view>
+  <view class='imagePathBox' hidden="{{maskHidden == false}}">
+      <image src="{{imagePath}}" class='shengcheng' style="width:{{canvasWidth}}px;height:{{canvasHeight}}px;"></image>
+      <button class='baocun' bindtap='saveToAlbum'>保存相册，分享到朋友圈</button>
+  </view>
+  <view hidden="{{maskHidden == false}}" class="mask"></view> 
+  <view class="canvas-box">
+      <canvas  style="width: 375px;height: 667px;position:fixed;top:9999px" canvas-id="mycanvas"/>
+  </view>
+</view>
+
+

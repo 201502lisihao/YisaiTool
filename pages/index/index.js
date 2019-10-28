@@ -41,6 +41,17 @@ Page({
             url: '/pages/user/myPoints/myPoints'
           }
         ]
+      },
+      {
+        id: 'about',
+        name: '关于我们',
+        open: false,
+        pages: [
+          {
+            name: '关于我们',
+            url: '/pages/more/about/about'
+          }
+        ]
       }
     ]
   },

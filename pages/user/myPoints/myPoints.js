@@ -10,7 +10,8 @@ Page({
     hasOrderList: false,
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    refresh:true
   },
 
   /**
@@ -53,6 +54,7 @@ Page({
     }
     //获取用户订单信息
     this.getOrderListByUserId();
+    wx.hideLoading();
   },
 
   getUserInfo: function (e) {
@@ -70,7 +72,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    wx.hideLoading();
+
   },
 
   /**
@@ -120,10 +122,37 @@ Page({
   /**
    * button带参数跳转订单详情页
    */
-  orderDetail: function (id) {
+  openConfirm: function (id) {
+    var that = this;
     var id = id.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: '../orderResult/orderResult?orderId=' + id,
+    console.log(id);
+    wx.showModal({
+      title: '确认核销？',
+      content: '请确认核销由伊赛门店工作人员发起',
+      confirmText: "确认核销",
+      cancelText: "取消",
+      success: function (res) {
+        console.log(res);
+        if (res.confirm) {
+          console.log('确认核销');
+          //调服务器更新积分状态
+          wx.request({
+            url: 'https://www.qianzhuli.top/yisai/orderexchange?orderId=' + id,
+            success(res) {
+              console.log(res);
+              //返回积分页，刷新页面数据
+              that.onLoad();
+            },
+            fail(res) {
+              //弹窗提示核销失败，稍后再试
+              console.log('告知服务器更新订单状态失败');
+              console.log(res);
+            }
+          })
+        } else {
+          console.log('用户点击取消');
+        }
+      }
     });
   },
 
@@ -135,7 +164,7 @@ Page({
     var userId = wx.getStorageSync('userId');
     //请求服务器，获取该用户实时的orderList并放入缓存
     wx.request({
-      url: 'https://www.qianzhuli.top/wx/getorderlistbyuserid?userId=' + userId,
+      url: 'https://www.qianzhuli.top/yisai/getorderlistbyuserid?userId=' + userId,
       success: function (res) {
         var orderList = res.data.order_list
         console.log(orderList);
@@ -156,11 +185,11 @@ Page({
     })
   },
   /**
-   * 即刻下单
+   * 分享
    */
-  goOrder: function () {
+  goShare: function () {
     wx.navigateTo({
-      url: '/pages/Order/selectStore/selectStore',
+      url: '/pages/index/index',
     })
   },
 
@@ -174,9 +203,12 @@ Page({
         success: function (res) {
           if (res.confirm) {
             console.log('用户点击确定')
-            wx.redirectTo({
-              url: '/pages/index/index',
-            })
+            // wx.redirectTo({
+            //   url: '/pages/index/index',
+            // })
+            wx.navigateBack({
+              
+            });
           }
         }
       });

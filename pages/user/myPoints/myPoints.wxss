@@ -38,11 +38,11 @@
 }
 
 .weui-cell__ft {
-  color: #0a7e00;
+  color: #ff7e0c;
 }
 
 .detailButton {
-  background-color: #0a7e00;
+  background-color: #ff7e0c;
   color: #fff;
   font-size: 30rpx;
 }
