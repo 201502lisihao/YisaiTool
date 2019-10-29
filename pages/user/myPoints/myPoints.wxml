@@ -1,8 +1,15 @@
-<!-- 下拉刷新提示 -->
-  <view style="text-align: center;margin-bottom:-20rpx;margin-top:20rpx;">
-    <label style="font-size:24rpx; color:gray;">-----下拉查看最新积分-----</label>
-  </view>
 
+<!-- dock -->
+<view class="page">
+<view class="page__bd page__bd_spacing" style="padding-bottom:0rpx;padding-left:34rpx;padding-right:34rpx;padding-top:30rpx;">
+  <view class="weui-flex">
+              <view class="weui-flex__item"><view class="placeholder-title">批量核销:</view></view>
+              <view class="weui-flex__item"><view class="placeholder-50" bindtap="batchConsume" data-point="5">50分</view></view>
+              <view class="weui-flex__item"><view class="placeholder-100" bindtap="batchConsume" data-point="10">100分</view></view>
+              <view class="weui-flex__item"><view class="placeholder-200" bindtap="batchConsume" data-point="20">200分</view></view>
+  </view>
+</view>
+</view>
 <!-- 订单列表展示 -->
 <view wx:if="{{hasOrderList}}" class="container">
   <block wx:for="{{orderList}}" wx:key="id">
@@ -10,11 +17,11 @@
     <view class="card"  wx:if="{{item.order_status == '待核销'}}">
       <view class="weui-cells">
         <view class="weui-cell">
-          <view class="weui-cell__bd">获得积分时间：{{item.create_at}}</view>
+          <view class="weui-cell__bd">获得时间：{{item.create_at}}</view>
           <view class="weui-cell__ft">{{item.order_status}}</view>
         </view>
         <view class="weui-cell">
-          <view class="weui-cell__bd">获取方式：{{item.apply_from}}</view>
+          <view class="weui-cell__bd">获取方式：{{item.apply_from}},每日限领1次</view>
         </view>
         <!-- <view class="weui-cell">
           <view class="weui-cell__bd" wx:if="{{item.get_time}}">完成时间：{{item.get_time}}</view>
@@ -22,6 +29,9 @@
         </view> -->
         <view class="weui-cell">
           <view class="weui-cell__bd">使用方式：门店出示，10积分抵1元</view>
+        </view>
+        <view class="weui-cell">
+          <view class="weui-cell__bd" >可用门店：<text bindtap="storeList" style="text-decoration:underline;color:#ff983d">点击查看</text></view>
         </view>
         <view class="weui-cell" style="line-height:2.5;">
           <view class="weui-cell__bd" style="color:#000;font-size:40rpx;">积分：{{item.award_point}}分</view>
@@ -34,11 +44,11 @@
     <view class="card" style="background-color:rgb(245,245,245)" wx:else>
       <view class="weui-cells" style="background-color:rgb(245,245,245)">
         <view class="weui-cell">
-          <view class="weui-cell__bd">获得积分时间：{{item.create_at}}</view>
+          <view class="weui-cell__bd">获得时间：{{item.create_at}}</view>
           <view class="weui-cell__ft" style="color:#0a7e00">{{item.order_status}}</view>
         </view>
         <view class="weui-cell">
-          <view class="weui-cell__bd">获取方式：{{item.apply_from}}</view>
+          <view class="weui-cell__bd">获取方式：{{item.apply_from}},每日限领1次</view>
         </view>
         <!-- <view class="weui-cell">
           <view class="weui-cell__bd" wx:if="{{item.get_time}}">完成时间：{{item.get_time}}</view>
@@ -46,6 +56,9 @@
         </view> -->
         <view class="weui-cell">
           <view class="weui-cell__bd">使用方式：门店出示，10积分抵1元</view>
+        </view>
+        <view class="weui-cell">
+          <view class="weui-cell__bd" >可用门店：<text bindtap="storeList" style="text-decoration:underline">点击查看</text></view>
         </view>
         <view class="weui-cell" style="line-height:2.5;">
           <view class="weui-cell__bd" style="font-size:40rpx;">积分：{{item.award_point}}分</view>
@@ -66,7 +79,12 @@
     <text>暂无积分</text>
   </view>
   <!--去下单按钮-->
-  <view class="page" style="display:flex;flex-direction: column;align-items: center;">
+  <!-- <view class="page" style="display:flex;flex-direction: column;align-items: center;">
     <button class="weui-btn" type="primary" bindtap="goShare" style="width:60%">分享得积分</button>
-  </view>
+  </view> -->
 </view>
+
+<!-- 下拉刷新提示 -->
+<!-- <view style="text-align: center;margin-bottom:40rpx;margin-top:0rpx;">
+  <label style="font-size:24rpx; color:gray;">-----下拉查看最新积分-----</label>
+</view> -->

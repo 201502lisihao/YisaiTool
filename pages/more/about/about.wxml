@@ -1,2 +1,2 @@
-<!--pages/more/about/about.wxml-->
-<text>pages/more/about/about.wxml</text>
+<!-- 跳转绑定的公众号的推文 -->
+<web-view src="https://mp.weixin.qq.com/s/EUBRm728lBzasu4Mmjh71g"></web-view>

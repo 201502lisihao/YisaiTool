@@ -43,14 +43,18 @@ Page({
         ]
       },
       {
-        id: 'about',
-        name: '关于我们',
+        id: 'more',
+        name: '更多',
         open: false,
         pages: [
           {
+            name: '在线商城',
+            url: '/pages/more/mall/mall'
+          },
+          {
             name: '关于我们',
             url: '/pages/more/about/about'
-          }
+          },
         ]
       }
     ]
@@ -107,13 +111,7 @@ Page({
       list: list
     });
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-
+  
   /**
    * 获取欢迎词
    */

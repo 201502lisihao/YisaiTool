@@ -38,11 +38,11 @@
 }
 
 .weui-cell__ft {
-  color: #ff7e0c;
+  color: #ff983d;
 }
 
 .detailButton {
-  background-color: #ff7e0c;
+  background-color: #ff983d;
   color: #fff;
   font-size: 30rpx;
 }
@@ -77,4 +77,61 @@
 }
 .weui-btn:first-child{
   margin-top: 40rpx;
+}
+
+/* dock操作栏 */
+.placeholder-title{
+    margin: 5px;
+    padding: 0 5px;
+    text-align: center;
+    background-color: transparent;
+    height: 2.3em;
+    line-height: 2.3em;
+    color: #969696;
+    font-size: 30rpx;
+}
+
+.placeholder-50{
+    margin: 5px;
+    padding: 0 5px;
+    text-align: center;
+    background-color: rgb(185, 131, 255);
+    /* border: 4rpx solid gold; */
+    border-radius: 20rpx;
+    height: 2.3em;
+    line-height: 2.3em;
+    color: #ffffff;
+    font-size: 30rpx;
+    box-shadow: 4rpx 4rpx 2rpx 2rpx rgb(151, 151, 151);
+    font-weight: bold;
+}
+
+.placeholder-100{
+    margin: 5px;
+    padding: 0 5px;
+    text-align: center;
+    background-color: #66b5ff;
+    /* border: 4rpx solid rgb(0, 129, 235); */
+    border-radius: 20rpx;
+    height: 2.3em;
+    line-height: 2.3em;
+    color: #ffffff;
+    font-size: 30rpx;
+    box-shadow: 4rpx 4rpx 2rpx 2rpx rgb(151, 151, 151);
+    font-weight: bold;
+}
+
+.placeholder-200{
+    margin: 5px;
+    padding: 0 5px;
+    text-align: center;
+    background-color: rgb(255, 123, 196);
+    /* border: 4rpx solid gold; */
+    border-radius: 20rpx;
+    height: 2.3em;
+    line-height: 2.3em;
+    color: #ffffff;
+    font-size: 30rpx;
+    box-shadow: 4rpx 4rpx 2rpx 2rpx rgb(151, 151, 151);
+    font-weight: bold;
 }

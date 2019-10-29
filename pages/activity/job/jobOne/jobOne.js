@@ -273,7 +273,7 @@ Page({
       data: {
         userId: wx.getStorageSync('userId'),
         awardPoint: 10,
-        applyFrom:'转发得积分',
+        applyFrom:'分享得积分',
         orderDetail: 'nothing'
       },
       success: function (res) {

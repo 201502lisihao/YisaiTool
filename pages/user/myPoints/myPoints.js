@@ -128,7 +128,7 @@ Page({
     console.log(id);
     wx.showModal({
       title: '确认核销？',
-      content: '请确认核销由伊赛门店工作人员发起',
+      content: '请确认核销由门店收银员发起',
       confirmText: "确认核销",
       cancelText: "取消",
       success: function (res) {
@@ -157,6 +157,15 @@ Page({
   },
 
   /**
+   * 查看门店列表
+   */
+  storeList: function (){
+    wx.navigateTo({
+      url: '/pages/other/storeList/storeList',
+    })
+  },
+
+  /**
    * 根据userId获取用户订单
    */
   getOrderListByUserId: function () {
@@ -167,7 +176,6 @@ Page({
       url: 'https://www.qianzhuli.top/yisai/getorderlistbyuserid?userId=' + userId,
       success: function (res) {
         var orderList = res.data.order_list
-        console.log(orderList);
         //放入本地缓存
         //wx.setStorageSync(key, orderList);
         //放入页面data
@@ -184,6 +192,75 @@ Page({
       }
     })
   },
+
+  /**
+   * 批量核销订单
+   */
+  batchConsume: function(e){
+    var that = this;
+    var userId = wx.getStorageSync('userId');
+    //获取用户需要批量核销的数量
+    var point = e.currentTarget.dataset.point;
+    wx.showModal({
+      title: '确认核销' + point*10 + '积分？',
+      content: '请确认核销由门店收银员发起',
+      confirmText: "确认核销",
+      cancelText: "取消",
+      success: function (res) {
+        if (res.confirm) {
+          //请求服务器，获取该用户实时的orderList并放入缓存
+          wx.request({
+            url: 'https://www.qianzhuli.top/yisai/batchconsume?userId=' + userId + '&point=' + point,
+            success: function (res) {
+              console.log(res);
+              //判断业务是否成功
+              var code = res.data.code;
+              if(code == 200){
+                //批量核销成功，弹窗&重新刷新页面
+                wx.showModal({
+                  content: '成功核销' + point * 10 + '积分',
+                  showCancel: false,
+                  success: function (res) {
+                    if (res.confirm) {
+                      console.log('用户点击确定');
+                      that.onLoad();
+                    }
+                  }
+                });
+              } else {
+                wx.showModal({
+                  content: '可用积分不足'+ point*10 +'分',
+                  showCancel: false,
+                  success: function (res) {
+                    if (res.confirm) {
+                      console.log('用户点击确定');
+                    }
+                  }
+                });
+              }
+            },
+            fail: function (res) {
+              console.log('请求服务器批量核销失败，res=' + res);
+              //弹窗提示失败
+              wx.showModal({
+                content: '核销失败',
+                showCancel: false,
+                success: function (res) {
+                  if (res.confirm) {
+                    console.log('用户点击确定');
+                  }
+                }
+              });
+            }
+          })
+        } else {
+          console.log('用户点击取消');
+        }
+      }
+    });
+    
+  },
+
   /**
    * 分享
    */
@@ -212,5 +289,5 @@ Page({
           }
         }
       });
-    }
+  }
 })
